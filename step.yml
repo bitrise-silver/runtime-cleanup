@@ -1,0 +1,29 @@
+title: Clean up unused runtimes
+summary: This step helps free up disk space by removing unused runtimes in Bitrise VMs.
+
+website: https://github.com/bitrise-silver/runtime-cleanup
+source_code_url: https://github.com/bitrise-silver/runtime-cleanup
+support_url: https://github.com/bitrise-silver/runtime-cleanup/issues
+
+type_tags:
+- utility
+
+run_if: .IsCI
+is_skippable: true
+
+toolkit:
+  go:
+    package_name: https://github.com/bitrise-silver/runtime-cleanup
+
+inputs:
+- remove_versions_lower_than: "0.0"
+  opts:
+    title: Remove runtimes with lower-bound versions
+    summary: Remove runtimes with versions lower than this parameter value
+    is_required: false
+
+- remove_versions_higher_than: "99.0"
+  opts:
+    title: Remove runtimes with upper-bound versions
+    summary: Remove runtimes with versions lower than this parameter value
+    is_required: false
